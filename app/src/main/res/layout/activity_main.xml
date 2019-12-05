@@ -18,11 +18,22 @@
         android:id="@+id/mTimePicker"
         />
          <Button
+             android:background="@color/colorPrimary"
+             android:textColor="#FFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setAlarmButton"
         android:text="Set Alarm"
         />
+        <Button
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelAlarmButton"
+            android:text="Cancel Alarm"
+            />
 
     </LinearLayout>
 
