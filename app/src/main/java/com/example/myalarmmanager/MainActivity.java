@@ -34,14 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setAlarmButton = findViewById(R.id.setAlarmButton);
         cancelAlarmButton = findViewById(R.id.cancelAlarmButton);
 
-        deviceBootReceiver();
-
         setAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar myCalender = Calendar.getInstance();
                 if(Build.VERSION.SDK_INT>=23)
-                myCalender.set(myCalender.get(Calendar.YEAR),myCalender.get(Calendar.MONTH),myCalender.get(Calendar.DAY_OF_WEEK),myTimePicker.getHour(),myTimePicker.getMinute(),0);
+                    myCalender.set(myCalender.get(Calendar.YEAR),myCalender.get(Calendar.MONTH),myCalender.get(Calendar.DAY_OF_WEEK),myTimePicker.getHour(),myTimePicker.getMinute(),0);
                 else
                 {
                     myCalender.set(myCalender.get(Calendar.YEAR),myCalender.get(Calendar.MONTH),myCalender.get(Calendar.DAY_OF_WEEK),myTimePicker.getCurrentHour(),myTimePicker.getCurrentMinute(),0);
@@ -50,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         cancelAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,13 +55,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //deviceBootReceiver();
+
     }
 
     private void setAlarm(long timeInMillis) {
-        aManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        AlarmManager aManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this,MyAlarm.class);
 
-        pIntent =  PendingIntent.getBroadcast(this,0,intent,0);
+        PendingIntent pIntent =  PendingIntent.getBroadcast(this,0,intent,0);
         aManager.setRepeating(AlarmManager.RTC,timeInMillis,AlarmManager.INTERVAL_DAY,pIntent);
 
         Toast.makeText(this,"Alarm set",Toast.LENGTH_SHORT).show();
