@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //deviceBootReceiver();
+        deviceBootReceiver();
 
     }
 

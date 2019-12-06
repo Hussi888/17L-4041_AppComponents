@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
     <manifest package="com.example.myalarmmanager" xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     -<application android:theme="@style/AppTheme" android:supportsRtl="true" android:roundIcon="@mipmap/ic_launcher_round" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:allowBackup="true">
 
@@ -20,6 +20,12 @@
 </activity>
 
     <receiver android:name=".MyAlarm" android:exported="true" android:enabled="true"/>
+    <receiver android:name=".SampleBootReceiver"
+        android:enabled="true">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+        </intent-filter>
+    </receiver>
 
 </application>
 
